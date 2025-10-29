@@ -117,7 +117,7 @@ const App: React.FC = () => {
   const totalArmorPenalty = useMemo(() => {
     if (!characterSheet) return 0;
     return (characterSheet.defense.armor?.penalty || 0) + (characterSheet.defense.shield?.penalty || 0);
-  }, [characterSheet?.defense.armor, characterSheet?.defense.shield]);
+  }, [characterSheet?.defense.armor?.penalty, characterSheet?.defense.shield?.penalty]);
 
   const calculatedDefense = useMemo(() => {
     if (!characterSheet) return 10;
@@ -131,7 +131,13 @@ const App: React.FC = () => {
         + (characterSheet.defense.shield?.defense || 0)
         + characterSheet.defense.others
         + defenseEffects;
-  }, [characterSheet?.attributes.des.modifier, characterSheet?.defense, characterSheet?.effects]);
+  }, [
+      characterSheet?.attributes.des.modifier, 
+      characterSheet?.defense.armor?.defense, 
+      characterSheet?.defense.shield?.defense, 
+      characterSheet?.defense.others, 
+      characterSheet?.effects
+    ]);
 
   const calculatedSkills: CalculatedSkills = useMemo(() => {
       if (!characterSheet) return {};
