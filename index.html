@@ -15,7 +15,17 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+<style>
+    /* Ocultar botões de rotação em entradas numéricas */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+</style>
 </head>
   <body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-white transition-colors duration-300">
     <div id="root"></div>

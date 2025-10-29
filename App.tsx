@@ -62,12 +62,7 @@ const App: React.FC = () => {
   }, [appState]);
 
   useEffect(() => {
-    const html = document.documentElement;
-    if (appState.theme === 'light') {
-        html.classList.remove('dark');
-    } else {
-        html.classList.add('dark');
-    }
+    document.documentElement.classList.toggle('dark', appState.theme === 'dark');
   }, [appState.theme]);
   
   const handleUpdate = useCallback((field: string, value: any) => {

@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { type CharacterSheet, type Ability, type CalculatedSkills } from '../types';
 import Section from './Section';
 import Inventory from './Inventory';
-import EffectsManager from './EffectsManager';
-import ConditionManager from './ConditionManager';
 
 interface CharacterMiscProps {
   data: CharacterSheet;
@@ -146,17 +144,6 @@ const CharacterMisc: React.FC<CharacterMiscProps> = ({ data, onUpdate, calculate
             </div>
         </Section>
         
-        <ConditionManager
-            effects={data.effects}
-            onUpdate={(newEffects) => onUpdate('effects', newEffects)}
-        />
-        
-        <EffectsManager
-            effects={data.effects}
-            skills={calculatedSkills}
-            onUpdate={(newEffects) => onUpdate('effects', newEffects)}
-        />
-
         <TextAreaSection title="Proficiências" value={data.proficiencies} onChange={v => onUpdate('proficiencies', v)} rows={3} />
         <Inventory
           inventory={data.inventory}
